@@ -6,6 +6,27 @@
     <link rel="stylesheet" href="static/css/style.css" type="text/css"></link>
     <!-- Don't need jQuery for Tabletop, but using it for this example -->
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Earned', 'Iowa', 'Nebraska'],
+          ['Earned $7.25 or less',  46000,      32000],
+          ['Earned $9 or less',  164000,      97000],
+          ['Earned just over $9',  45000,       27000],
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          vAxis: {title: 'Hourly Pay',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -14,6 +35,39 @@
             <div class="hero-unit">
                 <h1>Street duders</h1>
                 <p>This graph will rule</p>
+            </div>
+            <div class="street-dude">
+                <div class="top-info">
+                <!-- Put info here about the article -->
+                </div>
+                <div class="infographic" hidden-phone>
+                    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                </div>
+                <div class="voices-container">
+                    <div class="row-fluid">
+                        <div class="span4">
+                            <img style="width:150px;height:150px;" src="static/img/cat1.jpg" class="img-rounded">
+                            <blockquote>
+                                <p>Employers are going to be cautious and not overhire.</p>
+                                <small>Ruth Comer, <cite title="HyVee Supermarkets spokesperson">Hyvee Supermarkets spokesperson</cite></small>
+                            </blockquote>
+                        </div>
+                        <div class="span4">
+                            <img style="width:150px;height:150px;" src="static/img/cat2.jpg" class="img-rounded">
+                            <blockquote>
+                                <p>You cannot support a family on minimum wage.</p>
+                                <small>Chelsea Salifou, <cite title="Executive Director">Food pantry executive director</cite></small>
+                            </blockquote>
+                        </div>
+                        <div class="span4">
+                            <img style="width:150px;height:150px;" src="static/img/cat3.jpg" class="img-rounded">
+                            <blockquote>
+                                <p>If they're 16 years old and it's their first job, obviously we're going to pay them minimum wage. (But) if it's someone that's got a lot of experience and they've got the kind of personality that we want and the work ethic that we want, if we have to pay a little more for them to come, then we will.</p>
+                                <small>Alan D'Agosto, <cite title="owner of Panda Inc">Panda Inc. owner</cite></small>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
